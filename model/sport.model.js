@@ -17,17 +17,17 @@ const SportSchema = new Schema({
 const Sport = mongoose.model('sport', SportSchema);
 
 // Add a 'dummy' user (every time you require this file!)
-const sport = new Sport({
-    name: 'Sport',
-    description: 'test sport',
-    clubs: [{
-        name: 'A club',
-        description: 'test club',
-        registrations: [{
-            name: 'Registrations',
-            description: 'test description'
-        }]
-    }]
-}).save();
+// const sport = new Sport({
+//     name: 'Sport',
+//     description: 'test sport',
+//     clubs: [{
+//         name: 'A club',
+//         description: 'test club',
+//         registrations: [{
+//             name: 'Registrations',
+//             description: 'test description'
+//         }]
+//     }]
+// }).save();
 
 module.exports = Sport;
