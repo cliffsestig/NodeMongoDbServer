@@ -4,7 +4,7 @@ var env = {
     dbPort: process.env.DB_PORT || '',
     dbUser: process.env.DB_USER || '',
     dbPassword: process.env.DB_PASSWORD || '',
-    dbDatabase: process.env.DB_DATABASE || 'clubs'
+    dbDatabase: process.env.DB_DATABASE || 'sportProject'
 }
 
 var dburl = process.env.NODE_ENV === 'production' ?
