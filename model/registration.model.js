@@ -2,11 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RegistrationSchema = new Schema({
-    name: {
+    firstname: {
         type: String,
         required: true
     },
-    description: String,
+    lastname: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    gender: {
+        type: String,
+        required: true
+    },
 }, {
     timestamps: true
 });

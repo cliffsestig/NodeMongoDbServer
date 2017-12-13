@@ -72,7 +72,7 @@ app.use(function (req, res, next) {
 // app.use('/api/v1', auth_routes_v1);
  app.use('/api/v1', sportroutes_v1);
  app.use('/api/v1', clubroutes_v1);
-// app.use('/api/v1', registrationroutes_v1);
+ app.use('/api/v1', registrationroutes_v1);
 
 // Errorhandler voor express-jwt errors
 // Wordt uitgevoerd wanneer err != null; anders door naar next().

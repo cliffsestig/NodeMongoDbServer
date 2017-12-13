@@ -75,8 +75,8 @@ routes.post('/sport/:id',function (req, res) {
 	var id = mongoose.Types.ObjectId(req.params.id);
 	Sport.findById(id, function(err, sport){
 		const resultPromise = session.run(
-			'MATCH (s:Sport) WHERE s.name = $sportName CREATE (a:Club {name: $clubName, description: $description}), (a)-[:ClubOf]->(s)',
-			{sportName: sport.name, clubName: req.body.name, description: req.body.description}
+			'MATCH (s:Sport) WHERE s.name = $sportName CREATE (a:Club {name: $clubName, description: $description, city: $city, address: $address, zipcode: $zipcode}), (a)-[:ClubOf]->(s)',
+			{sportName: sport.name, clubName: req.body.name, description: req.body.description, city: req.body.city, address: req.body.address, zipcode: req.body.address}
 		);
 
 		resultPromise.then(result => {
@@ -180,8 +180,8 @@ routes.post('/sport/:id/club/:cid',function (req, res) {
 	var cid = mongoose.Types.ObjectId(req.params.cid);
 	Sport.findById(id, function(err, sport){
 		const resultPromise = session.run(
-			'MATCH (c:Club) WHERE c.name = $clubName CREATE (r:Registration {name: $registrationName, description: $description}), (r)-[:RegisteredTo]->(c)',
-			{clubName: sport.clubs.id(cid).name, registrationName: req.body.name, description: req.body.description }
+			'MATCH (c:Club) WHERE c.name = $clubName CREATE (r:Registration {firstname: $firstName, lastname: $lastName, age: $age, gender: $gender}), (r)-[:RegisteredTo]->(c)',
+			{clubName: sport.clubs.id(cid).name, firstName: req.body.firstname, lastName: req.body.lastname, age: req.body.age, gender: req.body.gender }
 		);
 
 		resultPromise.then(result => {

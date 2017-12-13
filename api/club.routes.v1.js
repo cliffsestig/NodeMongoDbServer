@@ -14,33 +14,18 @@ var session = driver.session();
 //
 routes.get('/club', function (req, res) {
     res.contentType('application/json');
-
-    // Club.find({})
-    //     .then(function (clubs) {
-    //         res.status(200).json(clubs);
-    //     })
-    //     .catch((error) => {
-    //         res.status(400).json(error);
-    //     });
-
 		session
-		  .run('MATCH (n:Sport) RETURN n LIMIT 25')
+		  .run('MATCH (n:Club) RETURN n LIMIT 25')
 		  .then(function (result) {
-		    result.records.forEach(function (record) {
-		      console.log(record.get('n'));
-		      
-		    });
-		    res.status(200).json(result);
-		    session.close();
+		  	 res.status(200).json(result.records);
+		  	 session.close();
+		     driver.close();
+		   
 		  })	
 		  .catch(function (error) {
-
             res.status(400).json(error);
 		    console.log(error);
 		  });
 });
 
-
-
-driver.close();
 module.exports = routes;
