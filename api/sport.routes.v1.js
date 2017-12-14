@@ -136,6 +136,17 @@ routes.delete('/sport/:id', function (req, res) {
 			message: "Sport successfully deleted",
 			id: sport._id
 		};
+		const resultPromise = session.run(
+			'MATCH (s:Sport {_id: $id})<-[*0..]-(c) DETACH DELETE c',
+			{id: req.params.id}
+		);
+
+		resultPromise.then(result => {
+			session.close();
+
+			// on application exit:
+			driver.close();
+		});
 		res.status(200).send(response);
 	});
 });
@@ -193,7 +204,8 @@ routes.delete('/sport/:id/club/:cid', function (req, res) {
 			id: sport._id
 		};
 		const resultPromise = session.run(
-			'MATCH '
+			'MATCH (c:Club {_id: $id})<-[*0..]-(r) DETACH DELETE r',
+			{id: req.params.cid}
 		);
 
 		resultPromise.then(result => {
