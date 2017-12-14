@@ -6,7 +6,7 @@ var routes = express.Router();
 var mongodb = require('../config/mongo.db');
 var Club = require('../model/club.model');
 var neo4j = require('neo4j-driver').v1;
-var driver = neo4j.driver("bolt://localhost:7687", neo4j.auth.basic("neo4j", "neo4j"));
+var driver = neo4j.driver("bolt://hobby-gnpcegpfcfhdgbkemofmijal.dbs.graphenedb.com:24786", neo4j.auth.basic("test", "b.jUwOcqqDuvWm.bzGTqEIJwoiGAbQR"));
 var session = driver.session();
 
 //
